@@ -1,0 +1,23 @@
+{
+  "name": "javascript_module3",
+  "version": "1.0.0",
+  "description": "todo application",
+  "main": "todoapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "add": "node todoapp.js add --title 'title add new' --body 'body add new'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarneyenkaDzmitry/JavaScript_Module3.git"
+  },
+  "author": "Dzmitry_Karneyenka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarneyenkaDzmitry/JavaScript_Module3/issues"
+  },
+  "homepage": "https://github.com/KarneyenkaDzmitry/JavaScript_Module3#readme",
+  "dependencies": {
+    "yargs": "^11.0.0"
+  }
+}
