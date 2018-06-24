@@ -2,13 +2,21 @@
 const fs = require('fs');
 const path = './data/list.json';
 function reader() {
-    const content = fs.readFileSync(path, 'utf8');
-    const json = JSON.parse(content);
-    return json;
+    try {
+        return JSON.parse(fs.readFileSync(path, 'utf8'));
+    } catch (error) {
+        return error;
+    }
+    
 }
 function writer(data) {
-    console.log('writer function' + data);
-    fs.writeFileSync(path, data, 'utf8');
+    try {
+        fs.writeFileSync(path, data, 'utf8');
+        return true;
+    } catch (error) {
+        return error;
+    }
+    
 }
 
 exports.reader = reader;
