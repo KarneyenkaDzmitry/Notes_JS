@@ -1,5 +1,5 @@
 'use strict';
-const obj = require('../data/rwdata.js');
+const obj = require('../util/rwdata.js');
 
 function list() {
     let result = '';
@@ -27,34 +27,32 @@ function read(title) {
         });
     }
      return result;
-    
 }
 
-function add(title1, body1) {
+function add(newTitle, newBody) {
     let json = obj.reader();
     for (let i = 0; i < json.notes.length; i++) {
-        if (json.notes[i].title === title1) {
-            return `The note with title: [${title1}] has already existed in the list.`;
+        if (json.notes[i].title === newTitle) {
+            return `The note with title: [${newTitle}] has already existed in the list.`;
         }
     };
     const data = {
-        title: title1,
-        body: body1
+        title: newTitle,
+        body: newBody
     };
     json.notes.push(data);
-    const mark = obj.writer(JSON.stringify(json));
-    if (mark) {
-        return `New note with title: [${title1}] and body: [${body1}] was successfully added to list.`;
+    const ind = obj.writer(JSON.stringify(json));
+    if (ind===true) {
+        return `New note with title: [${newTitle}] and body: [${newBody}] was successfully added to list.`;
     } else {
-        return mark;
+        return ind;
     }
-
 }
 
 function remove(title) {
     let json = obj.reader();
     let result = `There isn\'t a note with title ${title}`;
-    (json.notes).forEach((element, index, mass) => {
+    (json.notes).forEach((element, index) => {
         if (element.title === title) {
             json.notes.splice(index, 1);
             obj.writer(JSON.stringify(json));
